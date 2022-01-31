@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 
 class ImagickColorTest extends TestCase
 {
-    public function tearDown()
+    public function tearDown(): void
     {
         Mockery::close();
     }

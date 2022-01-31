@@ -37,7 +37,7 @@ class LimitColorsCommand extends AbstractCommand
             $canvas->newImage($size->width, $size->height, $mattecolor, 'png');
 
             // lower colors of original and copy to matte
-            $image->getCore()->quantizeImage($count, \Imagick::COLORSPACE_RGB, 0, false, false);
+            $image->getCore()->quantizeImage($count ?? 0, \Imagick::COLORSPACE_RGB, 0, false, false);
             $canvas->compositeImage($image->getCore(), \Imagick::COMPOSITE_DEFAULT, 0, 0);
 
             // copy new alpha to canvas
@@ -48,7 +48,7 @@ class LimitColorsCommand extends AbstractCommand
 
         } else {
 
-            $image->getCore()->quantizeImage($count, \Imagick::COLORSPACE_RGB, 0, false, false);
+            $image->getCore()->quantizeImage($count ?? 0, \Imagick::COLORSPACE_RGB, 0, false, false);
             $image->getCore()->compositeImage($alpha, \Imagick::COMPOSITE_COPYOPACITY, 0, 0);
 
         }

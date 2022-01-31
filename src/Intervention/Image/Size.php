@@ -258,11 +258,8 @@ class Size
 
     /**
      * Checks if given size fits into current size
-     *
-     * @param  Size   $size
-     * @return boolean
      */
-    public function fitsInto(Size $size)
+    public function fitsInto(Size $size): bool
     {
         return ($this->width <= $size->width) && ($this->height <= $size->height);
     }
@@ -270,15 +267,10 @@ class Size
     /**
      * Aligns current size's pivot point to given position
      * and moves point automatically by offset.
-     *
-     * @param  string  $position
-     * @param  int     $offset_x
-     * @param  int     $offset_y
-     * @return \Intervention\Image\Size
      */
-    public function align($position, $offset_x = 0, $offset_y = 0)
+    public function align(?string $position, int $offset_x = 0, int $offset_y = 0): Size
     {
-        switch (strtolower($position)) {
+        switch (strtolower($position ?? 'top-left')) {
 
             case 'top':
             case 'top-center':
